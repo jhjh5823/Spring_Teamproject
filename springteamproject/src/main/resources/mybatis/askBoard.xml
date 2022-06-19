@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="askBoard">
+
+	<!-- 최대 글번호 얻기 -->
+	<select id="numMax" resultType="java.lang.Integer">
+		select max(ask_num) from ask_board
+	</select>
+
+	<!-- 글쓰기, 답글쓰기 -->
+	<insert id="insertAskDao" parameterType="askBoardDTO">
+		insert into ask_board(ask_writer, ask_subject, ask_content, ask_regdate, ask_ref, ask_restep, ask_relevel) 
+		values(#{ask_writer}, #{ask_subject}, #{ask_content}, NOW(), #{ask_ref}, #{ask_restep}, #{ask_relevel})
+	</insert>
+	
+	<!-- 답글 끼워넣기 위치 확보 -->
+	<update id="askReStep">
+		update ask_board set ask_restep=ask_restep+1 
+		where ask_ref=#{ask_ref} and ask_restep>#{ask_restep}
+  	</update>
+  	
+  	<!-- 글개수 얻기 (페이지 처리를 하기 위해) -->
+	<select id="selectAskCount" resultType="Integer">
+		select count(*) from ask_board
+	</select>
+
+	<!-- 리스트 -->
+	<select id="listAskDao" parameterType="java.util.Map" resultType="askBoardDTO">
+		select * from ask_board order by ask_ref desc, ask_restep asc 
+		limit #{start}, #{cnt}
+	</select>
+	
+	<!-- 글내용 보기 -->
+	<select id="getAskBoard" parameterType="Integer" resultType="askBoardDTO">
+		select * from ask_board where ask_num=#{ask_num}
+	</select>
+ 
+	<!-- 글삭제 -->
+	<delete id="askBoardDelete" parameterType="Integer">
+		delete from ask_board where ask_num=#{ask_num}
+	</delete>
+</mapper>

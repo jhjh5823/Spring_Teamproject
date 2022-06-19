@@ -1,0 +1,14 @@
+create database springteamproject;
+
+use springteamproject;
+
+create table ask_board (
+ask_num int(4) primary key auto_increment,
+ask_writer varchar(30) not null,
+ask_subject varchar(50) not null,
+ask_content text not null,
+ask_regdate datetime,
+ask_ref int(4) not null,
+ask_relevel int(4) not null,
+ask_restep int(4) not null
+);

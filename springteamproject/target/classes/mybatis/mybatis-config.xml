@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd" >
+
+<configuration>
+  <typeAliases>
+  
+    <typeAlias alias="boardDTO" type="model.board.BoardDto"/>
+   
+    <typeAlias alias="memberDTO" type="model.member.MemberDto"/>
+ 
+ 	<typeAlias alias="requestDTO" type="model.board.RequestDto"/>
+  	
+  	<typeAlias alias="noticeDTO" type="model.notice.NoticeDto"/>
+  	
+  	<typeAlias  alias="faqDTO" type="model.board.FaqDto"/>
+  	
+  	<typeAlias  alias="itemDTO" type="model.item.ItemDto"/>
+  	
+  	<typeAlias  alias="replyDTO" type="model.item.ReplyDto"/>
+  	
+  	<typeAlias  alias="askBoardDTO" type="model.board.AskBoardDto"/>
+  	 	
+    <typeAlias alias="freeDTO" type="model.free.FreeDto"/>
+
+  	
+  </typeAliases>
+  
+  <mappers>
+  
+    <mapper resource="/mybatis/board.xml"/>
+    
+    <mapper resource="/mybatis/member.xml"/>
+    
+    <mapper resource="/mybatis/faq.xml"/>
+    
+    <mapper resource="/mybatis/notice.xml"/>
+    
+    <mapper resource="/mybatis/request.xml"/>
+    
+    <mapper resource="/mybatis/item.xml"/>
+    
+    <mapper resource="/mybatis/itemReply.xml"/>
+    
+    <mapper resource="/mybatis/askBoard.xml"/>
+    
+    <mapper resource="/mybatis/free.xml"/>
+    
+  </mappers>
+    
+</configuration>

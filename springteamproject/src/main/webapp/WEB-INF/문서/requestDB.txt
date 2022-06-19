@@ -1,0 +1,16 @@
+use springteamproject;
+
+create table request(
+num int(4) not null auto_increment primary key,
+writer varchar(30) not null,
+subject varchar(50) not null,
+category varchar(30) not null,
+content text not null,
+wdate date,
+readcount int default 0,
+ref int(11) not null,
+re_step int(11) not null,
+re_level int(11) not null,
+ip varchar(30)
+);
+

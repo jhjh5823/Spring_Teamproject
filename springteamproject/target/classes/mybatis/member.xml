@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+<!-- ID중복체크,회원 정보 수정 -->
+<select id="selectOne" parameterType="String" resultType="memberDTO">
+  select * from member
+  where id=#{id}
+</select>
+
+<!-- 회원 가입 -->
+<insert id="insertMember" parameterType="memberDTO">
+  insert into member(id,pw,name,email,tel,zipcode,addr,addr2,regdate)
+  values(#{id},#{pw},#{name},#{email},#{tel},#{zipcode},#{addr},#{addr2},NOW())
+</insert>
+
+<!-- 로그인 -->
+<select id="selectLogin" parameterType="map" resultType="memberDTO">
+  select * from member 
+  where id=#{id} AND pw=#{pw}
+</select>
+
+<!-- 내정보수정 -->
+<update id="memberUpdate" parameterType="memberDTO">
+  update member
+  set pw=#{pw},
+  name=#{name},
+  email=#{email},
+  tel=#{tel},
+  zipcode=#{zipcode},
+  addr=#{addr},
+  addr2=#{addr2}
+  where id=#{id}
+</update>
+
+<!-- 회원탈퇴 -->
+<delete id="memberDelete" parameterType="map">
+  delete from member
+  where id=#{id} AND pw=#{pw}
+</delete>
+</mapper>
+

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="free">
+<!-- 글쓰기-->
+<insert id="insertDao" parameterType="freeDTO">
+  insert into free(user_id,subject,content,regdate,img,ip) 
+  values(#{user_id},#{subject},#{content},NOW(),#{img},#{ip})
+</insert>
+
+ <!-- 리스트 -->
+ <select id="listDao" parameterType="java.util.Map"  resultType="freeDTO">
+   select * from free
+   order by free_no desc
+   limit #{start},#{cnt}
+ </select>
+ <!-- 리스트 -->
+ <select id="listDao2" parameterType="java.util.Map"  resultType="freeDTO">
+   select * from free
+ </select>
+ 
+  <!-- 검색리스트 -->
+ <select id="searchListDao" parameterType="java.util.Map" resultType="freeDTO">
+   select * from free 
+   where ${keyField} like '%${keyWord}%'
+ </select>
+ 
+ <!-- 글 갯수 , 페이지 처리-->
+ <select id="selectCount" resultType="int">
+   select count(*) from free
+ </select>
+ 
+ <!-- 조회수 증가 -->
+ <update id="readCount" parameterType="int">
+   update free
+   set readcount=readcount+1
+   where free_no=#{free_no}
+ </update>
+ 
+   <!-- 글내용보기, 글수정 폼 -->
+ <select id="getFree" parameterType="int" resultType="freeDTO">
+   select * from free
+   where free_no=#{free_no}
+ </select>
+
+ <!-- DB글 수정 -->
+ <update id="freeUpdate" parameterType="freeDTO">
+   update free
+   	 set  subject=#{subject},
+     content=#{content},
+     img=#{img}
+   where free_no=#{free_no} 
+ </update>
+ 
+ <!-- 글삭제 -->
+ <delete id="freeDelete" parameterType="int">
+   delete from free
+   where free_no=#{free_no}
+ </delete>
+
+</mapper>

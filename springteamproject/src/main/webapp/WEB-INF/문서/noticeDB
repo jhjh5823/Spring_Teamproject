@@ -1,0 +1,9 @@
+create table notice(
+noticeno int primary key auto_increment,
+writer varchar(20) not null,
+subject varchar(50) not null,
+content text not null,
+regdate datetime,
+readcount int DEFAULT 0 not null,
+emer varchar(4) not null
+);

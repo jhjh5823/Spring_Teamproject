@@ -1,0 +1,61 @@
+ItemListDB.txt
+
+create table itemDB(
+item_no int(5) primary key auto_increment,
+item_seller varchar(30) not null,
+item_name varchar(50) not null,
+item_price int(5) not null,
+item_detail varchar(4000),
+item_area varchar(30) not null,
+item_regdate datetime,
+item_image varchar(30)
+);
+
+insert into itemDB values(0,'깨비','창문형냉장고 팝니다','50000','케리어 창문형 에어컨 팝니다. 학원에서 사용했고 사용감 많지 않습니다.
+3대있습니다.','양천구 신정동',NOW(),'aircon1.JPG');
+
+insert into itemDB values(0,'CA24002','티티카카 접이식 미니벨로-STREAM F7','100000','티티카카 접이식 미니벨로 스트림 f7 입니다. 사용감 있고요 사진확인바랍니다
+흰색, 검은색 2대 이며 각 10만원 입니다. 연락주세요.','영등포구 문래동',NOW(),'bike1.JPG');
+
+insert into itemDB values(0,'양천불주먹','게이밍 그래픽 카드 GTX980 2GB','50000','게이밍 그래픽 카드 
+GTX980 2G 입니다
+방금 까지 사용한 제품 입니다.','양천구 목동',NOW(),'graphic1.JPG');
+
+insert into itemDB values(0,'10정승','기타 필요하신 분 계시나요','1000','한참 안 쓰던거라 잘 연주가 될지는 모르겠어요 
+싸게팝니다','성북구 정릉동',NOW(),'guitar1.JPG');
+
+insert into itemDB values(0,'용산되팔램','고장난 노트북','50000','Lenovo ideapad 330s-14IKB
+2019년도에 구입했습니다
+하드가 나가서 작동이 되지 않습니다.','영등포구 대림동',NOW(),'notebook1.JPG');
+
+insert into itemDB values(0,'트레이너','포켓몬빵 팔아요','1500','안녕하세요!
+포켓몬빵 팔아요!
+못드셔보신분 위주로 판매 할게요','송파구 석촌동',NOW(),'pocketmon.JPG');
+
+insert into itemDB values(0,'브루주아','루이비통 지갑','299000','작어서 가방에 넣고 다니기 편해서
+사용한 흔적이 좀 있습니다.
+전체적으로 상태 많이 양호하니
+사진 잘 보고 구매해주세요','강남구 삼성동',NOW(),'wallet1.JPG');
+
+insert into itemDB values(0,'냉동인간','냉장고팝니다 A급','50000','직접가져가실분','중랑구 면목동',NOW(),'refrigerator1.JPG');
+
+
+Reply 구현
+
+create table reply(
+reply_rno int not null auto_increment,
+item_no int not null,
+reply_writer varchar(30) not null,
+reply_content text not null,
+reply_regDate datetime not null,
+PRIMARY KEY(reply_rno, item_no),
+FOREIGN KEY(item_no) REFERENCES itemDB(item_no)
+);
+
+
+
+
+
+
+
+

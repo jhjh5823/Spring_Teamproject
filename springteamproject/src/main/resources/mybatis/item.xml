@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="item">
+	<!-- 리스트 -->
+	<select id="itemList" resultType="itemDTO">
+		select * from itemDB
+	</select>
+
+	<!-- 검색리스트 -->
+	<select id="itemSearchList" parameterType="String" resultType="itemDTO">
+		select * from itemDB
+		where item_name like
+		concat('%',#{search},'%') or item_detail like
+		concat('%',#{search},'%') or item_area like concat('%',#{search},'%')
+	</select>
+
+	<!-- 글내용 보기, 글수정폼 -->
+	<select id="getItem" parameterType="int" resultType="itemDTO">
+		select *
+		from itemDB
+		where item_no=#{item_no}
+	</select>
+	<!-- 글쓰기 -->
+	<insert id="insertItem" parameterType="itemDTO">
+		insert into
+		itemDB(item_seller,item_name,item_price,item_detail,item_area,item_regdate,item_image)
+		values(#{item_seller},#{item_name},#{item_price},#{item_detail},#{item_area},NOW(),#{item_image})
+	</insert>
+
+	<!-- 글삭제 -->
+	<delete id="itemDelete" parameterType="int">
+		delete from itemDB
+		where
+		item_no=#{item_no}
+	</delete>
+	
+	<!-- DB글수정 -->
+	<update id="itemUpdate" parameterType="itemDTO">
+		update itemDB 
+		set item_name=#{item_name},item_price=#{item_price},item_detail=#{item_detail},item_area=#{item_area},item_image=#{item_image}
+		where item_no=#{item_no}
+	</update>
+	
+</mapper>

@@ -1,0 +1,21 @@
+
+create table free(
+user_id varchar(20) not null,
+free_no int primary key auto_increment,
+subject varchar(50) not null,
+content text not null,
+regdate datetime,
+readcount int DEFAULT 0 not null,
+img varchar(50),
+ip varchar(20) not null
+);
+
+create table reply(
+reply_rno int not null auto_increment,
+free_no int not null,
+reply_writer varchar(30) not null,
+reply_content text not null,
+reply_regDate datetime not null,
+PRIMARY KEY(reply_rno, free_no),
+FOREIGN KEY(free_no) REFERENCES free(free_no)
+);
