@@ -7,3 +7,4 @@
 ![MYSQL](https://user-images.githubusercontent.com/106261829/174797570-2bf92692-2f5d-4c16-9cf0-c6f756ae3034.png)
 
 2. Tiles 기법을 사용해 header, main, footer 영역으로 구분해 홈화면 구성
+![tiles](https://user-images.githubusercontent.com/106261829/174797663-0ea42ad2-48f0-4a81-a629-2af906ec6a0e.png)
