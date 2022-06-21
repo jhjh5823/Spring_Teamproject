@@ -8,3 +8,7 @@
 
 2. Tiles 기법을 사용해 header, main, footer 영역으로 구분해 홈화면 구성
 ![tiles](https://user-images.githubusercontent.com/106261829/174797663-0ea42ad2-48f0-4a81-a629-2af906ec6a0e.png)
+
+3. DB와 연동해서 로그인 시스템 구현(로그인, 회원가입, 내 정보관리 기능)
+![login1](https://user-images.githubusercontent.com/106261829/174798493-f756ae2f-6eec-4681-804f-5118fb384b63.png)
+![login2](https://user-images.githubusercontent.com/106261829/174798530-282bd554-f7fb-41f2-ae6a-82d4d24b87c2.png)
