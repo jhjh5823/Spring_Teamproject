@@ -4,6 +4,6 @@
 
 ### 주요 기능
 1. MYSQL DB와 연동된 각 기능에 맞는 게시판 제작(상품 게시판, 자유 게시판, Q&A 등)
-
+![MYSQL](https://user-images.githubusercontent.com/106261829/174797570-2bf92692-2f5d-4c16-9cf0-c6f756ae3034.png)
 
 2. Tiles 기법을 사용해 header, main, footer 영역으로 구분해 홈화면 구성
